@@ -5,17 +5,38 @@ export default [
     name: 'home',
     alias: '/home_page',
     component: Home,
+    // route 当前路由对象
+    props: route => ({
+      food: route.query.food
+    }),
+    // beforeEnter: (to, from, next) => {
+    //   if (from.name === 'about') {
+    //     alert('这是从about页面来的');
+    //   } else {
+    //     alert('这不是从about页面来的');
+    //   }
+    //   next()
+    // }
   },
   {
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+    // 路由组件传参方式2（对象方式）
+    props: {
+      food: 'Apple'
+    },
+    meta: {
+      title: '关于我们'
+    }
   },
   // 动态路由 (:name 动态路由参数)
   {
     path: '/argu/:name',
     name: 'argu',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Argu.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Argu.vue'),
+    // 路由组件传参方式1(布尔模式)
+    props: true
   },
   // 嵌套路由
   {
@@ -54,5 +75,9 @@ export default [
     //   path: '/about'
     // }
     redirect: to => '/'
+  },
+  {
+    path: '/*',
+    component: () => import('@/views/Error_404.vue')
   }
 ]
