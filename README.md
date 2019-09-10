@@ -110,6 +110,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 12. 用创建好的实例 beforeRouteEnter 守卫里传给 next 的回调函数
 
 ### 路由元信息
+router.js 文件中定义 meta 属性
+在调用的全局守卫设置 beforeEach 中设置
 
 ### export 和 export default 的区别
 1. 一个文件或模块中，export、import 可以有多个，export default 只能有一个
@@ -136,3 +138,5 @@ v-leave-to {
   opacity: 0
 }
 ```
+
+### Vuex

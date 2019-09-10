@@ -77,6 +77,10 @@ export default [
     redirect: to => '/'
   },
   {
+    path: '/store',
+    component: () => import('@/views/Store')
+  },
+  {
     path: '/*',
     component: () => import('@/views/Error_404.vue')
   }
