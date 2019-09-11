@@ -139,4 +139,36 @@ v-leave-to {
 }
 ```
 
+### **对象中的扩展运算符(...)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中**
+
 ### Vuex
+1. bus 在 lib 目录下新建 bus.js 文件，写入内容如下
+```
+import Vue from 'vue'
+const Bus = new Vue()
+export default Bus
+```
+2. 在入口文件 main.js 中引入，并挂载到 Vue.prototype上
+```
+import Bus from '@/lib/bus'
+Vue.prototype.$bus = Bus
+```
+
+###### 使用步骤
+1. 新建 store 目录
+  + 新建 index.js（对外导出）
+  + 新建 state.js
+  + 新建 actions.js
+  + 新建 mutations.js
+  + 新建 module 目录
+    - 新建其他的 js 文件
+2. 在入口文件 main.js 中引入，并注册
+
+###### 获取 store 目录下 module 目录中文件的值
+```
+...mapState({
+  appName: 'appName',
+  // 获取 store 目录下 module 目录中文件的值，其中 user 是对应的模块的名
+  userName: (state) => state.user.userName
+})
+```
