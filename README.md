@@ -172,3 +172,27 @@ Vue.prototype.$bus = Bus
   userName: (state) => state.user.userName
 })
 ```
+
+######
+如果进行异步操作
+actions 中进行一些异步操作（请求接口）获取数据 然后 commit 去提交一个 mutations，在mutations 中修改state 中的数据
+如果不进行异步操作
+可以直接通过 commit 提交一个 mutations
+
+###### 动态注册模块
+```
+this.$store.registerModule('todo', {
+  state: {
+    todoList: ['学习mutations', '学习actions']
+  }
+})
+this.$store.registerModule(['user', 'todo'], {
+  state: {
+    todoList: [
+      'vue',
+      'react',
+      'angular'
+    ]
+  }
+})
+```
